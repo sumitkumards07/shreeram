@@ -1,0 +1,33 @@
+/**
+ * Portable token sheet for the Shree Ram Solution site.
+ * app/globals.css is the live copy used by the build; this file documents the
+ * same tokens for reuse in other formats (exports, decks, ad creative).
+ *
+ * Palette is locked by the project brief:
+ *   primary  #0B4F6C — trust / finance
+ *   accent   #00A896 — CTAs / highlights
+ *   paper    #F7F9FA — page background
+ *   cards    #FFFFFF — with soft shadow, radius lg
+ *   type     Inter, tabular numerals for all money figures
+ */
+
+:root {
+  --color-primary: #0b4f6c;
+  --color-primary-deep: #083a50;
+  --color-accent: #00a896;
+  --color-accent-deep: #00806f;
+  --color-paper: #f7f9fa;
+  --color-card: #ffffff;
+  --color-ink: #16262e;
+  --color-ink-soft: #4f6270;
+  --color-line: #e2e9ee;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
+  --radius-card: 1rem;
+  --space-section: 4rem;
+}
