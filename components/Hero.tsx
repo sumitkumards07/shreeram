@@ -58,16 +58,16 @@ function EmiMiniWidget() {
   return (
     <div className="relative">
       {/* Decorative stacked card underneath mimicking Coinbase floating product mockups */}
-      <div className="absolute inset-0 translate-x-2 translate-y-3 rounded-xl bg-surface-dark-elevated/50 shadow-md" aria-hidden="true" />
+      <div className="absolute inset-0 translate-x-2 translate-y-3 rounded-xl bg-surface-card/50 shadow-md" aria-hidden="true" />
       
       <Card
         radius="lg"
         shadow="none"
-        className="relative shadow-lg bg-surface-dark-elevated text-on-dark"
+        className="relative shadow-lg bg-surface-card text-ink"
       >
         <CardBody className="gap-5 p-8">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-lg font-semibold text-on-dark">
+            <p className="text-lg font-semibold text-ink">
               Quick EMI estimate
             </p>
             <Chip size="sm" variant="flat" color="primary" radius="full">
@@ -77,10 +77,10 @@ function EmiMiniWidget() {
 
           <div>
             <div className="mb-1 flex items-baseline justify-between gap-2">
-              <span className="text-sm font-medium text-on-dark-soft">
+              <span className="text-sm font-medium text-muted">
                 Loan amount
               </span>
-              <span className="tnum font-mono text-sm font-medium text-on-dark">
+              <span className="tnum font-mono text-sm font-medium text-ink">
                 {formatINRShort(amount)}
               </span>
             </div>
@@ -94,7 +94,7 @@ function EmiMiniWidget() {
               value={amount}
               onChange={(v) => setAmount(Array.isArray(v) ? v[0] : v)}
               classNames={{
-                track: "bg-surface-dark",
+                track: "bg-background",
                 thumb: "w-5 h-5 bg-primary"
               }}
             />
@@ -102,10 +102,10 @@ function EmiMiniWidget() {
 
           <div>
             <div className="mb-1 flex items-baseline justify-between gap-2">
-              <span className="text-sm font-medium text-on-dark-soft">
+              <span className="text-sm font-medium text-muted">
                 Tenure
               </span>
-              <span className="tnum font-mono text-sm font-medium text-on-dark">
+              <span className="tnum font-mono text-sm font-medium text-ink">
                 {tenureYears} yrs
               </span>
             </div>
@@ -119,25 +119,25 @@ function EmiMiniWidget() {
               value={tenureYears}
               onChange={(v) => setTenure(Array.isArray(v) ? v[0] : v)}
               classNames={{
-                track: "bg-surface-dark",
+                track: "bg-background",
                 thumb: "w-5 h-5 bg-primary"
               }}
             />
           </div>
 
           <div>
-            <p className="text-xs text-on-dark-soft">
+            <p className="text-xs text-muted">
               at an indicative {emi.defaultRate.toFixed(1)}% p.a. reducing balance
             </p>
             <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2">
-              <p className="text-sm font-medium text-on-dark-soft">
+              <p className="text-sm font-medium text-muted">
                 Estimated monthly EMI
               </p>
               <p className="tnum font-mono text-3xl font-medium text-primary">
                 {formatINR(result.emi)}
               </p>
             </div>
-            <p className="mt-1 text-xs text-on-dark-soft">
+            <p className="mt-1 text-xs text-muted">
               *{siteConfig.complianceCaption}
             </p>
           </div>
@@ -175,39 +175,39 @@ export function Hero() {
   const statsStarted = stripInView || forceStats;
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-surface-dark text-on-dark">
+    <section id="hero" className="relative overflow-hidden bg-background text-ink">
       {/* Editorial full-bleed dark hero styling */}
       
       <div className="relative mx-auto max-w-[1200px] px-4 pb-20 pt-24 sm:px-6 sm:pt-32 lg:px-8 lg:pb-32">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
           {/* ── Left: message, trust, CTAs ─────────────────────────────── */}
           <div>
-            <h1 className="text-balance mt-4 text-[44px] sm:text-[64px] lg:text-[80px] font-display font-normal tracking-[-2px] leading-[1.0] text-on-dark">
+            <h1 className="text-balance mt-4 text-[44px] sm:text-[64px] lg:text-[80px] font-display font-normal tracking-[-2px] leading-[1.0] text-ink">
               {hero.headline}
             </h1>
 
-            <p className="mt-6 max-w-xl text-base text-on-dark-soft sm:text-lg">
+            <p className="mt-6 max-w-xl text-base text-muted sm:text-lg">
               {hero.subheadline}
             </p>
 
             {/* Trust strip — count-up on scroll into view. */}
             <div
               ref={stripRef}
-              className="mt-10 flex flex-wrap gap-x-8 gap-y-6 sm:gap-x-0 sm:divide-x sm:divide-white/10"
+              className="mt-10 flex flex-wrap gap-x-8 gap-y-6 sm:gap-x-0 sm:divide-x sm:divide-black/10"
             >
               {hero.stats.map((stat, i) => (
                 <div
                   key={stat.label}
                   className={i === 0 ? "pr-0 sm:pr-8" : "pr-0 sm:px-8"}
                 >
-                  <p className="text-[36px] font-normal leading-[1.11] text-on-dark tracking-tight">
+                  <p className="text-[36px] font-normal leading-[1.11] text-ink tracking-tight">
                     <StatValue
                       value={stat.value}
                       suffix={stat.suffix}
                       start={statsStarted}
                     />
                   </p>
-                  <p className="mt-1 text-sm text-on-dark-soft font-medium">
+                  <p className="mt-1 text-sm text-muted font-medium">
                     {stat.label}
                   </p>
                 </div>
@@ -235,10 +235,21 @@ export function Hero() {
                 variant="shadow"
                 radius="full"
                 size="lg"
-                className="px-6 h-14 font-semibold text-base text-on-dark hover:bg-white/5"
+                className="px-6 h-14 font-semibold text-base text-ink hover:bg-black/5"
                 startContent={<MessageCircle size={20} aria-hidden />}
               >
                 WhatsApp Us
+              </Button>
+              <Button
+                as="a"
+                href={siteConfig.phonePrimaryHref}
+                variant="shadow"
+                radius="full"
+                size="lg"
+                className="px-6 h-14 font-semibold text-base text-ink hover:bg-black/5"
+                startContent={<Phone size={20} aria-hidden />}
+              >
+                Call Now
               </Button>
             </div>
 
