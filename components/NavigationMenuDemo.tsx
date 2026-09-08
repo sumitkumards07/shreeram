@@ -126,9 +126,8 @@ export default function NavigationMenuDemo() {
             href={siteConfig.phonePrimaryHref}
             size="sm"
             variant="solid"
-            className="btn-3d"
+            className="btn-3d px-2.5 sm:px-3 font-semibold text-ink"
             aria-label={`Call ${siteConfig.phonePrimary}`}
-            className="px-2.5 sm:px-3 font-semibold border-hairline hover:border-primary text-ink"
           >
             <span className="tnum font-mono hidden sm:inline">
               {siteConfig.phonePrimary}
