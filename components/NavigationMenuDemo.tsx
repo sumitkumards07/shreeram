@@ -87,7 +87,7 @@ export default function NavigationMenuDemo() {
           {/* Logo */}
           <a href="/" className="flex min-w-0 items-center gap-2.5">
             <img
-              src="/logo.jpeg"
+              src="/logo.png"
               alt={siteConfig.name}
               className="h-8 w-8 sm:h-10 sm:w-10 shrink-0 object-contain rounded-md"
             />

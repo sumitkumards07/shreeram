@@ -71,7 +71,7 @@ export default function RootLayout({
     "@type": "LocalBusiness",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/icon.jpeg`,
+    logo: `${siteConfig.url}/icon.png`,
     description: "Loan consultancy (DSA) helping customers explore Home, Business, Personal and Car Loan options with eligibility and documentation assistance.",
     address: {
       "@type": "PostalAddress",

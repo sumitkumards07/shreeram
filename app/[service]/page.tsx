@@ -50,7 +50,7 @@ export default function ServicePage({ params }: { params: { service: string } })
     provider: {
       "@type": "LocalBusiness",
       name: siteConfig.name,
-      image: `${siteConfig.url}/icon.jpeg`,
+      image: `${siteConfig.url}/icon.png`,
       address: {
         "@type": "PostalAddress",
         streetAddress: "Shop No. 2, B-1, Govind Nagar, Marbal Mandi Chouraha, Near Aryan Restaurant, Kalwar Road",
