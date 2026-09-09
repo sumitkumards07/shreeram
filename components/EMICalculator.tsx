@@ -2,9 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { Button, Card, CardBody, Slider } from "@heroui/react";
-import { RotateCcw } from "lucide-react";
+import { ArrowRight, RotateCcw } from "lucide-react";
 import { siteConfig } from "@/lib/siteConfig";
 import { calculateEmi, formatINR, formatINRShort } from "@/lib/emiMath";
+import { openEligibility, scrollToId } from "@/lib/events";
 
 export function EMICalculator() {
   const { emi } = siteConfig;
@@ -188,6 +189,23 @@ export function EMICalculator() {
                 <p className="text-[12px] text-muted-soft mt-2">
                   *{siteConfig.complianceCaption} Rates vary by lender, profile, and loan type.
                 </p>
+
+                <div className="mt-6 pt-6 border-t border-black/5 flex flex-col gap-3">
+                  <p className="text-sm font-semibold text-ink">
+                    Want to know which lenders may fit this requirement?
+                  </p>
+                  <Button
+                    color="primary"
+                    className="btn-3d w-full font-semibold"
+                    endContent={<ArrowRight size={16} aria-hidden />}
+                    onPress={() => {
+                      openEligibility();
+                      scrollToId("eligibility");
+                    }}
+                  >
+                    Check My Eligibility
+                  </Button>
+                </div>
               </div>
             </div>
           </CardBody>

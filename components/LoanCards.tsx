@@ -3,6 +3,7 @@
 import { Button, Card, CardBody } from "@heroui/react";
 import { siteConfig, type LoanType } from "@/lib/siteConfig";
 import { calculateEmi, formatINR, formatINRShort } from "@/lib/emiMath";
+import Link from "next/link";
 import { openEligibility, scrollToId } from "@/lib/events";
 
 const loanIcons: Record<LoanType, string> = {
@@ -49,8 +50,8 @@ export function LoanCards() {
                       <img src={iconUrl} alt="" className="w-8 h-8 object-contain" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-[20px] font-bold text-[#0F172A] tracking-tight leading-tight mb-1.5">
-                        {loan.title}
+                      <h3 className="text-[20px] font-bold text-[#0F172A] tracking-tight leading-tight mb-1.5 hover:text-primary transition-colors">
+                        <Link href={`/${loan.id}-loan-jaipur`}>{loan.title}</Link>
                       </h3>
                       <p className="text-[13px] text-[#64748B] leading-relaxed">
                         {loan.blurb}
@@ -66,11 +67,11 @@ export function LoanCards() {
                         <img src="https://img.icons8.com/fluency/96/percentage.png" alt="" className="w-5 h-5 object-contain" />
                       </div>
                       <div>
-                        <p className="text-[11px] text-[#334155] mb-0.5">
-                          Rate <span className="opacity-80">(est)</span>
+                        <p className="text-[11px] text-[#334155] mb-0.5 uppercase tracking-wider font-semibold">
+                          From
                         </p>
                         <p className="text-[16px] font-bold text-[#0F172A] leading-none">
-                          {loan.rateMin}–{loan.rateMax}%
+                          {loan.rateMin}% p.a.
                         </p>
                       </div>
                     </div>
@@ -81,11 +82,11 @@ export function LoanCards() {
                         <img src="https://img.icons8.com/fluency/96/calendar.png" alt="" className="w-5 h-5 object-contain" />
                       </div>
                       <div>
-                        <p className="text-[11px] text-[#334155] mb-0.5">
-                          Tenure
+                        <p className="text-[11px] text-[#334155] mb-0.5 uppercase tracking-wider font-semibold">
+                          Up To
                         </p>
                         <p className="text-[16px] font-bold text-[#0F172A] leading-none">
-                          up to {loan.tenureMaxYears}y
+                          {loan.tenureMaxYears} years
                         </p>
                       </div>
                     </div>
@@ -109,6 +110,7 @@ export function LoanCards() {
 
                     <Button 
                       className="btn-3d w-full h-10 text-sm"
+                      endContent={<span className="ml-1 opacity-70">→</span>}
                       onPress={() => {
                         openEligibility(loan.id);
                         scrollToId("eligibility");

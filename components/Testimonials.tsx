@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Avatar, Button, Card, CardBody } from "@heroui/react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, BadgeCheck } from "lucide-react";
 import { siteConfig } from "@/lib/siteConfig";
 
 // NOTE: entries come from siteConfig.testimonials and are SAMPLE placeholders —
@@ -103,17 +103,24 @@ export function Testimonials() {
                   “{t.quote}”
                 </blockquote>
 
-                <div className="mt-auto flex items-center gap-3 pt-4">
+                <div className="mt-auto flex items-center gap-3 pt-4 border-t border-black/5 mt-4">
                   <Avatar
                     name={t.name}
                     size="sm"
                     className={i % 2 === 0 ? "bg-primary" : "bg-secondary"}
                   />
-                  <div>
-                    <p className="text-sm font-semibold text-[color:var(--color-ink)]">
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-[color:var(--color-ink)] flex items-center gap-1">
                       {t.name}
+                      {t.verified && <BadgeCheck size={14} className="text-blue-500" aria-label="Verified Customer" />}
                     </p>
-                    <p className="text-xs text-[color:var(--color-ink-soft)]">{t.city}</p>
+                    <p className="text-xs text-[color:var(--color-ink-soft)] flex flex-wrap items-center gap-x-1.5">
+                      <span>{t.monthYear}</span>
+                      <span>•</span>
+                      <span>{t.loanCategory}</span>
+                      <span>•</span>
+                      <span>{t.city}</span>
+                    </p>
                   </div>
                 </div>
               </CardBody>

@@ -68,10 +68,10 @@ const stepFields: (keyof EligibilityFormData)[][] = [
 ];
 
 const stepHeadings = [
-  "Which loan are you looking for?",
+  "What type of loan are you looking for?",
   "What is your monthly income?",
-  "Where are you located?",
-  "What describes you best?",
+  "Which city are you located in?",
+  "Which of these describes you best?",
 ];
 
 const incomeChips = [25000, 50000, 100000];
@@ -161,21 +161,30 @@ export function EligibilityChecker() {
           <CardBody className="p-5 sm:p-8">
             {step < 4 ? (
               <>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="hidden sm:flex items-center gap-2 text-xs font-medium text-[color:var(--color-ink-soft)]">
+                    <span className={step >= 0 ? "text-secondary font-bold" : ""}>01 Type</span>
+                    <span>───</span>
+                    <span className={step >= 1 ? "text-secondary font-bold" : ""}>02 Income</span>
+                    <span>───</span>
+                    <span className={step >= 2 ? "text-secondary font-bold" : ""}>03 City</span>
+                    <span>───</span>
+                    <span className={step >= 3 ? "text-secondary font-bold" : ""}>04 Profile</span>
+                  </div>
+                  <div className="sm:hidden text-xs font-medium text-[color:var(--color-ink-soft)]">
+                    Step {step + 1} of 4
+                  </div>
+                  <Chip size="sm" variant="flat" color="secondary">
+                    Takes &lt; 60 seconds
+                  </Chip>
+                </div>
                 <Progress
                   aria-label="Eligibility check progress"
                   value={((step + 1) / 4) * 100}
                   color="secondary"
                   size="sm"
-                  className="mb-2"
+                  className="mb-4 sm:hidden"
                 />
-                <div className="flex items-center justify-between">
-                  <p className="text-xs font-medium text-[color:var(--color-ink-soft)]">
-                    Step {step + 1} of 4
-                  </p>
-                  <Chip size="sm" variant="flat" color="secondary">
-                    ~60 seconds
-                  </Chip>
-                </div>
 
                 <h3 className="mt-5 text-lg font-semibold text-[color:var(--color-ink)] sm:text-xl">
                   {stepHeadings[step]}

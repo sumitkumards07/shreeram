@@ -48,18 +48,7 @@ export function StickyMobileBar() {
           className="fixed inset-x-0 bottom-0 z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] bg-background/95 backdrop-blur md:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
-          <div className="mx-auto grid max-w-md grid-cols-3">
-            <Button
-              as="a"
-              href={siteConfig.phonePrimaryHref}
-              variant="light"
-              radius="none"
-              aria-label={`Call ${siteConfig.phonePrimary}`}
-              className="h-14 flex-col gap-0.5 rounded-none text-xs font-medium text-primary"
-            >
-              <Phone size={20} aria-hidden />
-              Call
-            </Button>
+          <div className="mx-auto flex max-w-md items-center justify-between p-2 gap-2">
             <Button
               as="a"
               href={whatsappHref}
@@ -67,26 +56,23 @@ export function StickyMobileBar() {
               rel="noopener noreferrer"
               variant="flat"
               color="secondary"
-              radius="none"
-              aria-label="Chat on WhatsApp"
-              className="h-14 flex-col gap-0.5 rounded-none text-xs font-medium"
+              radius="lg"
+              className="h-12 flex-1 max-w-[120px] font-semibold text-sm"
+              startContent={<MessageCircle size={18} aria-hidden />}
             >
-              <MessageCircle size={20} aria-hidden />
               WhatsApp
             </Button>
             <Button
               variant="solid"
-              color="secondary"
-              radius="none"
-              aria-label="Check loan eligibility"
-              className="btn-3d h-14 flex-col gap-0.5 rounded-none text-xs font-medium"
+              color="primary"
+              radius="lg"
+              className="btn-3d h-12 flex-1 font-semibold text-sm"
               onPress={() => {
                 openEligibility();
                 scrollToId("eligibility");
               }}
             >
-              <Calculator size={20} aria-hidden />
-              Eligibility
+              Check Eligibility →
             </Button>
           </div>
         </motion.nav>

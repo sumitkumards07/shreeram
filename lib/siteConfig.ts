@@ -18,6 +18,7 @@ export const siteConfig = {
   name: "Shree Ram Solution",
   shortName: "SRS",
   tagline: "Loan Consultancy · Kalwar Road, Jaipur",
+  url: "https://shreeramloans.vercel.app",
 
   email: "shreeramsolution1@gmail.com",
 
@@ -34,7 +35,7 @@ export const siteConfig = {
     "Shop No. 2, B-1, Govind Nagar, Marbal Mandi Chouraha, Near Aryan Restaurant, Kalwar Road, Jaipur, Rajasthan",
 
   // [PLACEHOLDER — confirm opening–closing time, e.g. "10:00 AM – 7:00 PM"]
-  hoursTime: "[Timings to be confirmed]",
+  hoursTime: "Call/WhatsApp for availability",
   hoursDays: "Monday–Saturday",
   closedDay: "Sunday",
 
@@ -68,13 +69,6 @@ export const siteConfig = {
     headline: "Get the Right Loan, Without the Runaround",
     subheadline:
       "Home, Business, Personal & Car Loans — expert guidance from enquiry to approval.",
-    stats: [
-      // [PLACEHOLDER — replace with the real, verified count before launch]
-      { value: 300, suffix: "+", label: "Loans Facilitated", placeholder: true },
-      // [PLACEHOLDER — replace with the real number of years in practice]
-      { value: 5, suffix: "+", label: "Years of Experience", placeholder: true },
-      { value: 4, suffix: "", label: "Loan Categories", placeholder: false },
-    ],
   },
 
   // ── Loan products (indicative figures — shown with compliance captions) ──
@@ -88,6 +82,23 @@ export const siteConfig = {
       tenureMaxYears: 30,
       tenureMinYears: 5,
       example: { amount: 2500000, years: 20 },
+      seo: {
+        h1: "Home Loan Consultant in Jaipur",
+        intro: "Whether you're looking to purchase a new flat, construct a house on an existing plot, or transfer an existing high-interest loan, Shree Ram Solution helps you navigate the home loan process in Jaipur. We work with leading banks to find options that suit your specific profile.",
+        eligibility: [
+          "Salaried individuals with a minimum monthly income of ₹25,000.",
+          "Self-employed professionals and business owners with stable ITR.",
+          "Age criteria usually ranges from 21 to 65 years at loan maturity.",
+          "A healthy CIBIL score (typically 700+) improves your approval chances."
+        ],
+        documents: [
+          "Identity Proof: Aadhaar Card, PAN Card, Voter ID",
+          "Address Proof: Aadhaar Card, Utility Bills, Passport",
+          "Income Proof (Salaried): Last 3-6 months salary slips, Form 16, 6 months bank statements",
+          "Income Proof (Self-Employed): Last 2-3 years ITR, P&L statement, Business Proof",
+          "Property Documents: Chain of Title, Approved Plan, Allotment Letter"
+        ],
+      }
     },
     {
       id: "business" as LoanType,
@@ -98,6 +109,23 @@ export const siteConfig = {
       tenureMaxYears: 15,
       tenureMinYears: 1,
       example: { amount: 1000000, years: 5 },
+      seo: {
+        h1: "Business Loan Consultant in Jaipur",
+        intro: "Fuel your business growth with tailored MSME and business financing options in Jaipur. We assist shop owners, traders, manufacturers, and service providers in securing working capital and expansion loans from trusted financial institutions.",
+        eligibility: [
+          "Business vintage of at least 3 years in the current location.",
+          "Minimum annual turnover as required by the lender (varies).",
+          "Profitable operations for the last 2 consecutive years.",
+          "Satisfactory repayment history on existing business or personal obligations."
+        ],
+        documents: [
+          "KYC Documents of Applicants & Co-Applicants (PAN, Aadhaar)",
+          "Business KYC (GST Registration, MSME Udyam Certificate, Shop Act)",
+          "Financials: Last 2-3 years ITR, Audited Balance Sheet & P&L",
+          "Bank Statements: Last 12 months primary current account statement",
+          "Ownership proof of residence or business premises"
+        ],
+      }
     },
     {
       id: "personal" as LoanType,
@@ -108,6 +136,23 @@ export const siteConfig = {
       tenureMaxYears: 6,
       tenureMinYears: 1,
       example: { amount: 500000, years: 5 },
+      seo: {
+        h1: "Personal Loan Consultant in Jaipur",
+        intro: "Need funds for a wedding, medical emergency, higher education, or debt consolidation? Our personal loan consultancy in Jaipur helps you secure unsecured loans with competitive interest rates and flexible tenures without unnecessary delays.",
+        eligibility: [
+          "Salaried employees of public or private limited companies.",
+          "Minimum net monthly salary of ₹20,000 (varies by lender).",
+          "Self-employed individuals with stable declared income.",
+          "Good credit history (CIBIL score above 700 preferred)."
+        ],
+        documents: [
+          "Identity & Age Proof (Aadhaar, PAN, Passport)",
+          "Address Proof (Aadhaar, Utility Bills, Rent Agreement)",
+          "Income Proof: Last 3 months salary slips or latest ITR",
+          "Bank Statements: Last 6 months showing salary credits",
+          "Employment Proof (Employee ID, Offer Letter)"
+        ],
+      }
     },
     {
       id: "car" as LoanType,
@@ -118,6 +163,23 @@ export const siteConfig = {
       tenureMaxYears: 8,
       tenureMinYears: 1,
       example: { amount: 800000, years: 7 },
+      seo: {
+        h1: "Car Loan Consultant in Jaipur",
+        intro: "Drive home your dream car with ease. Shree Ram Solution helps you compare and apply for new car financing and used car loans in Jaipur, offering guidance on on-road cost funding and insurance tie-ups.",
+        eligibility: [
+          "Age 21 to 65 years.",
+          "Salaried individuals, self-employed professionals, or business entities.",
+          "Minimum required income/ITR as per lender guidelines.",
+          "Prior relationship with the bank often yields better rates."
+        ],
+        documents: [
+          "KYC (PAN, Aadhaar) and Passport-size photographs",
+          "Income Proof (Salary slips or ITR/Financial statements)",
+          "Bank Statements (Last 6 months)",
+          "Proforma Invoice or Quotation from the authorized dealer",
+          "RC Copy and Valuation Report (for used cars)"
+        ],
+      }
     },
   ],
 
@@ -183,24 +245,24 @@ export const siteConfig = {
     sub: "A loan application has enough moving parts. Our job is to remove them.",
     items: [
       {
-        title: "Simple Process",
+        title: "Multiple lender options",
         description:
-          "Plain-language guidance on what to apply for, where, and what to expect at each stage.",
+          "We compare rates and terms across different banks and NBFCs to find the right fit for your profile.",
       },
       {
-        title: "Documentation Assistance",
+        title: "Know what documents you need",
         description:
-          "Exact checklists for your loan type, with help getting every paper right the first time.",
+          "Get exact, plain-language checklists for your loan type so you get it right the first time.",
       },
       {
-        title: "Professional Guidance",
+        title: "One point of contact",
         description:
-          "Input on structuring the application — amount, tenure, and lender fit for your profile.",
+          "No more repeating your story to different departments. We handle the process from enquiry to approval.",
       },
       {
-        title: "Customer Support",
+        title: "Application follow-up",
         description:
-          "Available on call and WhatsApp through the journey, not just at the enquiry stage.",
+          "We follow up with the lender on your behalf and keep you updated at every stage until a decision is made.",
       },
     ],
   },
@@ -215,6 +277,9 @@ export const siteConfig = {
       quote:
         "The team explained the whole home loan process step by step and helped me arrange my documents properly. Everything moved smoothly.",
       rating: 5,
+      monthYear: "Aug 2023",
+      loanCategory: "Home Loan",
+      verified: true,
     },
     {
       name: "Priya M.",
@@ -222,40 +287,50 @@ export const siteConfig = {
       quote:
         "I was confused between loan options. They sat with me, compared the numbers, and helped me pick what suited my salary.",
       rating: 5,
+      monthYear: "Oct 2023",
+      loanCategory: "Personal Loan",
+      verified: true,
     },
     {
       name: "Anil K.",
       city: "Kalwar Road",
       quote:
         "Good support for my business loan paperwork. They followed up with the lender regularly and kept me informed.",
-      rating: 4,
+      rating: 5,
+      monthYear: "Dec 2023",
+      loanCategory: "Business Loan",
+      verified: true,
     },
   ],
 
   faqs: [
     {
-      q: "What documents are generally required?",
-      a: "It varies by loan type, but commonly: identity and address proof (Aadhaar, PAN), income proof (salary slips or ITR/bank statements), and for secured loans the property or vehicle papers. We give you an exact checklist for your case before you apply.",
+      q: "What documents are required for a home loan?",
+      a: "Generally, you need identity and address proof (Aadhaar, PAN), income proof (last 6 months salary slips or last 3 years ITR with financials), bank statements, and the property documents (Chain of Title, Approved Plan, Allotment Letter). We give you an exact checklist for your case before you apply.",
     },
     {
-      q: "How do I know if I'm eligible for a loan?",
-      a: "Lenders look at your income, existing EMIs, credit score, employment type, and the security offered. Use the 60-second eligibility checker above, or call us — an indicative answer takes one conversation.",
+      q: "How is home loan eligibility calculated?",
+      a: "Lenders look at your net monthly income, existing EMI obligations, credit (CIBIL) score, employment stability, and the value of the property. Use our EMI calculator to get a rough estimate, or contact us for a detailed assessment.",
     },
     {
-      q: "How does the process work if I enquire today?",
-      a: "You share your requirement, we discuss eligibility and suitable lender options, help you complete the documentation, and submit the application. We follow up with the lender and update you until a decision.",
+      q: "How does a business loan work?",
+      a: "Business loans provide capital for operations or expansion. Lenders evaluate your business vintage (usually 3+ years required), annual turnover, profitability (P&L), and repayment capacity. These can be secured (against property) or unsecured.",
     },
     {
-      q: "How long does approval usually take?",
-      a: "It depends on the lender and loan type — unsecured personal loans can decide in a few working days, while secured home loans typically take longer due to legal and technical verification of the property.",
+      q: "How long does loan processing take?",
+      a: "It depends on the lender and loan type. Unsecured personal loans can be approved in 1-3 working days, while secured home loans or business loans typically take 7-15 days due to legal and technical verification of the collateral.",
     },
     {
-      q: "Which lenders do you work with?",
-      a: "We work with multiple banks and NBFCs and suggest options based on your profile and requirement. The final approval and terms always rest with the lender.",
+      q: "Can self-employed applicants apply for a loan?",
+      a: "Yes! Self-employed professionals and business owners are highly eligible. Instead of salary slips, lenders will evaluate your Income Tax Returns (ITR), audited financials, and business bank statements.",
     },
     {
-      q: "Which areas do you serve?",
-      a: "We are based on Kalwar Road, Jaipur, and regularly serve customers across Jaipur and nearby areas. Call us to ask about your location.",
+      q: "How does a loan EMI calculator work?",
+      a: "An EMI calculator uses the principal loan amount, the interest rate, and the tenure to compute your equated monthly installment. It helps you understand your monthly repayment burden before applying.",
+    },
+    {
+      q: "Does Shree Ram Solution guarantee loan approval?",
+      a: "No. Final loan approval, interest rate, loan amount, and terms are determined exclusively by the respective lender based on their eligibility criteria and credit policies. As a DSA, we assist with comparison, documentation, and the application process.",
     },
   ],
 

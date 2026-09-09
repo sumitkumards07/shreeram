@@ -14,11 +14,12 @@ import {
 } from "@/components/ui/popover";
 
 const navLinks = [
-  { label: "Eligibility", href: "#eligibility" },
-  { label: "Loan Types", href: "#loans" },
-  { label: "EMI Calculator", href: "#emi-calculator" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home Loans", href: "/home-loan-jaipur" },
+  { label: "Business Loans", href: "/business-loan-jaipur" },
+  { label: "Personal Loans", href: "/personal-loan-jaipur" },
+  { label: "Car Loans", href: "/car-loan-jaipur" },
+  { label: "EMI Calculator", href: "/emi-calculator" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function NavigationMenuDemo() {
@@ -85,12 +86,11 @@ export default function NavigationMenuDemo() {
 
           {/* Logo */}
           <a href="#hero" className="flex min-w-0 items-center gap-2.5">
-            <span
-              aria-hidden
-              className="grid h-9 w-9 shrink-0 place-items-center icon-3d text-sm font-bold"
-            >
-              SR
-            </span>
+            <img
+              src="/logo.jpeg"
+              alt={siteConfig.name}
+              className="h-10 w-10 shrink-0 object-contain rounded-md"
+            />
             <span className="min-w-0">
               <span className="block truncate text-sm font-semibold leading-tight text-ink sm:text-base">
                 {siteConfig.name}

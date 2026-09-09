@@ -1,48 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { Button, Card, CardBody, Chip, Slider } from "@heroui/react";
-import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
-import { ArrowDown, Calculator, MessageCircle, Phone } from "lucide-react";
+import { ArrowDown, ArrowRight, Calculator, CheckCircle2, MessageCircle, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/siteConfig";
 import { calculateEmi, formatINR, formatINRShort } from "@/lib/emiMath";
 import { openEligibility, scrollToId } from "@/lib/events";
-
-/**
- * Animated count-up stat. One shared IntersectionObserver on the strip
- * container drives all three values (per-element observers proved flaky);
- * motion values render outside React state so the digits never stick.
- * If the observer hasn't fired within 3s of mount, the real number is
- * shown unanimated — the stat must never render a wrong value.
- */
-function StatValue({
-  value,
-  suffix,
-  start,
-}: {
-  value: number;
-  suffix: string;
-  start: boolean;
-}) {
-  const prefersReducedMotion = useReducedMotion();
-  const mv = useMotionValue(0);
-  const text = useTransform(mv, (v) => `${Math.round(v)}${suffix}`);
-
-  useEffect(() => {
-    if (!start) return;
-    if (prefersReducedMotion) {
-      mv.set(value);
-      return;
-    }
-    const controls = animate(mv, value, {
-      duration: 1.4,
-      ease: [0.22, 1, 0.36, 1],
-    });
-    return () => controls.stop();
-  }, [start, prefersReducedMotion, value, mv]);
-
-  return <motion.span className="tnum font-mono">{text}</motion.span>;
-}
 
 /** Compact EMI widget — the 3-second interaction hook from the brief. */
 function EmiMiniWidget() {
@@ -162,18 +125,6 @@ export function Hero() {
   const { hero } = siteConfig;
   const whatsappHref = siteConfig.whatsapp(siteConfig.whatsappDefaultMessage);
 
-  // One observer for the whole trust strip; fallback timer guarantees the
-  // stats show their real values even if the observer never fires.
-  const stripRef = useRef<HTMLDivElement>(null);
-  const stripInView = useInView(stripRef, { once: true, amount: 0.4 });
-  const [forceStats, setForceStats] = useState(false);
-  useEffect(() => {
-    if (stripInView) return;
-    const timer = setTimeout(() => setForceStats(true), 3000);
-    return () => clearTimeout(timer);
-  }, [stripInView]);
-  const statsStarted = stripInView || forceStats;
-
   return (
     <section id="hero" className="relative overflow-hidden bg-background text-ink">
       {/* Editorial full-bleed dark hero styling */}
@@ -182,50 +133,46 @@ export function Hero() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
           {/* ── Left: message, trust, CTAs ─────────────────────────────── */}
           <div>
-            <h1 className="text-balance mt-4 text-[44px] sm:text-[64px] lg:text-[80px] font-display font-normal tracking-[-2px] leading-[1.0] text-ink">
-              {hero.headline}
+            <h1 className="text-balance mt-4 text-[44px] sm:text-[64px] lg:text-[72px] font-display font-normal tracking-[-2px] leading-[1.05] text-ink">
+              Loan Consultant in Jaipur for Home, Business, Personal & Car Loans
             </h1>
 
             <p className="mt-6 max-w-xl text-base text-muted sm:text-lg">
-              {hero.subheadline}
+              Shree Ram Solution is a loan consultancy and DSA based in Jaipur helping individuals, professionals, self-employed customers and businesses explore suitable loan options from banks and NBFCs.
             </p>
 
-            {/* Trust strip — count-up on scroll into view. */}
-            <div
-              ref={stripRef}
-              className="mt-10 flex flex-wrap gap-x-8 gap-y-6 sm:gap-x-0 sm:divide-x sm:divide-black/10"
-            >
-              {hero.stats.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={i === 0 ? "pr-0 sm:pr-8" : "pr-0 sm:px-8"}
-                >
-                  <p className="text-[36px] font-normal leading-[1.11] text-ink tracking-tight">
-                    <StatValue
-                      value={stat.value}
-                      suffix={stat.suffix}
-                      start={statsStarted}
-                    />
-                  </p>
-                  <p className="mt-1 text-sm text-muted font-medium">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex items-center gap-2 text-sm font-medium text-ink">
+                <CheckCircle2 className="text-primary" size={18} />
+                <span>Multiple Bank & NBFC Options</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm font-medium text-ink">
+                <CheckCircle2 className="text-primary" size={18} />
+                <span>Documentation Assistance</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm font-medium text-ink">
+                <CheckCircle2 className="text-primary" size={18} />
+                <span>Transparent Guidance</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm font-medium text-ink">
+                <CheckCircle2 className="text-primary" size={18} />
+                <span>Local Jaipur Support</span>
+              </div>
             </div>
 
-            {/* Primary CTA row — stacked on mobile, inline from sm up */}
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            {/* Primary CTA row */}
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap">
               <Button
                 size="lg"
-                className="btn-3d px-8 h-14 text-base"
-                startContent={<Calculator size={20} aria-hidden />}
+                color="primary"
+                className="btn-3d px-8 h-14 text-base font-semibold"
+                endContent={<ArrowRight size={20} aria-hidden />}
                 onPress={() => {
                   openEligibility();
                   scrollToId("eligibility");
                 }}
               >
-                Check Eligibility
+                Check My Eligibility
               </Button>
               <Button
                 as="a"
@@ -238,19 +185,20 @@ export function Hero() {
                 className="px-6 h-14 font-semibold text-base text-ink hover:bg-black/5"
                 startContent={<MessageCircle size={20} aria-hidden />}
               >
-                WhatsApp Us
+                WhatsApp an Expert
               </Button>
-              <Button
-                as="a"
-                href={siteConfig.phonePrimaryHref}
-                variant="shadow"
-                radius="full"
-                size="lg"
-                className="px-6 h-14 font-semibold text-base text-ink hover:bg-black/5"
-                startContent={<Phone size={20} aria-hidden />}
-              >
-                Call Now
-              </Button>
+            </div>
+            
+            <p className="mt-4 text-sm text-muted font-medium flex items-center gap-2">
+              <Phone size={16} />
+              Call us: <a href={siteConfig.phonePrimaryHref} className="hover:text-primary transition-colors">{siteConfig.phonePrimary}</a>
+            </p>
+
+            <div className="mt-10 pt-8 border-t border-black/10">
+              <p className="text-sm font-bold text-ink mb-1.5">Shree Ram Solution</p>
+              <p className="text-sm text-muted leading-relaxed max-w-md">
+                Loan Consultancy & DSA helping customers compare and apply for Home, Business, Personal & Car Loans.
+              </p>
             </div>
 
           </div>
