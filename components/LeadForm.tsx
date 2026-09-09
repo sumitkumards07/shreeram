@@ -102,24 +102,20 @@ export function LeadForm() {
   const onSubmit = handleSubmit(async (data) => {
     setSubmitError(null);
     try {
-      const response = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.name.trim(),
-          mobile: data.mobile,
-          city: data.city.trim(),
-          loanType: data.loanType,
-          amount: Number(data.amount),
-          source: "website-lead-form",
-        }),
-      });
-      if (!response.ok) throw new Error(`Request failed (${response.status})`);
+      const message = `Hi Shree Ram Solution! I want to apply for a ${loanOptions.find((o) => o.value === data.loanType)?.label ?? "loan"}.
+Amount: ${data.amount ? formatINRShort(Number(data.amount)) : "-"}
+City: ${data.city.trim()}
+Name: ${data.name.trim()}
+Mobile: ${data.mobile}`;
+
+      const whatsappUrl = siteConfig.whatsapp(message);
+      window.open(whatsappUrl, "_blank");
+      
       setSubmittedMobile(data.mobile);
       setSubmitted(true);
     } catch {
       setSubmitError(
-        "Something went wrong sending your enquiry. Please try again, or reach us directly on WhatsApp.",
+        "Something went wrong while redirecting to WhatsApp. Please try again.",
       );
     }
   });

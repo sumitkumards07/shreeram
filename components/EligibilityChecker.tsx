@@ -141,7 +141,10 @@ export function EligibilityChecker() {
     "Please guide me further.",
   ].join("\n");
 
-  const onSubmit = handleSubmit(() => setStep(4), onInvalid);
+  const onSubmit = handleSubmit(() => {
+    setStep(4);
+    window.open(siteConfig.whatsapp(whatsappMessage), "_blank");
+  }, onInvalid);
 
   return (
     <section id="eligibility" className="py-14 sm:py-16 lg:py-20">
