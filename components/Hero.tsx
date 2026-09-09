@@ -189,10 +189,18 @@ export function Hero() {
               </Button>
             </div>
             
-            <p className="mt-4 text-sm text-muted font-medium flex items-center gap-2">
-              <Phone size={16} />
-              Call us: <a href={siteConfig.phonePrimaryHref} className="hover:text-primary transition-colors">{siteConfig.phonePrimary}</a>
-            </p>
+            <div className="mt-4 flex justify-center w-full">
+              <Button
+                as="a"
+                href={siteConfig.phonePrimaryHref}
+                variant="flat"
+                radius="full"
+                className="bg-transparent hover:bg-black/5 text-muted font-medium h-10 px-4"
+                startContent={<Phone size={16} />}
+              >
+                Call us: {siteConfig.phonePrimary}
+              </Button>
+            </div>
 
             <div className="mt-10 pt-8 border-t border-black/10">
               <p className="text-sm font-bold text-ink mb-1.5">Shree Ram Solution</p>
