@@ -2,19 +2,23 @@ import { Link, Divider } from "@heroui/react";
 import { siteConfig } from "@/lib/siteConfig";
 
 const serviceLinks = [
-  { label: "Home Loan", href: "#loans" },
-  { label: "Business Loan", href: "#loans" },
-  { label: "Personal Loan", href: "#loans" },
-  { label: "Car Loan", href: "#loans" },
+  { label: "Home Loan", href: "/home-loan-jaipur" },
+  { label: "Business Loan", href: "/business-loan-jaipur" },
+  { label: "Personal Loan", href: "/personal-loan-jaipur" },
+  { label: "Car Loan", href: "/car-loan-jaipur" },
 ];
 
 const quickLinks = [
-  { label: "Check Eligibility", href: "#eligibility" },
-  { label: "EMI Calculator", href: "#emi-calculator" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Request a Callback", href: "#apply" },
-  { label: "FAQ", href: "#faq" },
-  { label: "About Us", href: "#about" },
+  { label: "Check Eligibility", href: "/loan-eligibility" },
+  { label: "EMI Calculator", href: "/emi-calculator" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "About Us", href: "/about" },
+];
+
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "Disclaimer", href: "/disclaimer" },
 ];
 
 export function Footer() {
@@ -146,10 +150,24 @@ export function Footer() {
         </div>
 
         <Divider className="mt-8 bg-background/10" />
-        <div className="mt-6 flex flex-col gap-2 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {siteConfig.name}. All rights reserved.
-          </p>
+        <div className="mt-6 flex flex-col gap-4 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <p>© {year} {siteConfig.name}. All rights reserved.</p>
+            <div className="flex items-center gap-4 hidden sm:flex">
+              {legalLinks.map((link) => (
+                <Link key={link.label} href={link.href} className="text-white/50 hover:text-white transition-colors">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div className="flex items-center gap-4 mt-2 sm:hidden">
+              {legalLinks.map((link) => (
+                <Link key={link.label} href={link.href} className="text-white/50 hover:text-white transition-colors">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           <p>{siteConfig.tagline}</p>
         </div>
       </div>

@@ -55,9 +55,8 @@ export function StickyMobileBar() {
               target="_blank"
               rel="noopener noreferrer"
               variant="flat"
-              color="secondary"
               radius="lg"
-              className="h-12 flex-1 max-w-[120px] font-semibold text-sm"
+              className="h-12 w-[45%] font-semibold text-sm bg-green-50 hover:bg-green-100 text-green-700"
               startContent={<MessageCircle size={18} aria-hidden />}
             >
               WhatsApp
@@ -66,7 +65,7 @@ export function StickyMobileBar() {
               variant="solid"
               color="primary"
               radius="lg"
-              className="btn-3d h-12 flex-1 font-semibold text-sm"
+              className="btn-3d h-12 flex-1 font-bold text-[13px] tracking-wide"
               onPress={() => {
                 openEligibility();
                 scrollToId("eligibility");
