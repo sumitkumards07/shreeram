@@ -85,18 +85,18 @@ export default function NavigationMenuDemo() {
           </Popover>
 
           {/* Logo */}
-          <a href="#hero" className="flex min-w-0 items-center gap-2.5">
+          <a href="/" className="flex min-w-0 items-center gap-2.5">
             <img
               src="/logo.jpeg"
               alt={siteConfig.name}
-              className="h-10 w-10 shrink-0 object-contain rounded-md"
+              className="h-8 w-8 sm:h-10 sm:w-10 shrink-0 object-contain rounded-md"
             />
-            <span className="min-w-0">
-              <span className="block truncate text-sm font-semibold leading-tight text-ink sm:text-base">
-                {siteConfig.name}
+            <span className="min-w-0 hidden min-[360px]:block">
+              <span className="block truncate text-sm sm:text-base font-bold leading-tight text-ink">
+                {siteConfig.shortName}
               </span>
-              <span className="block truncate text-[11px] leading-tight text-muted-soft hidden sm:block">
-                {siteConfig.tagline}
+              <span className="block truncate text-[10px] sm:text-[11px] leading-tight text-muted-soft hidden sm:block">
+                Loan Consultancy
               </span>
             </span>
           </a>
@@ -120,30 +120,25 @@ export default function NavigationMenuDemo() {
 
         {/* Right side Actions */}
         <div className="flex items-center gap-2">
-          {/* Compact call button until there's room for the full number */}
+          <Button
+            as="a"
+            href="/contact"
+            size="sm"
+            color="primary"
+            className="btn-3d px-3 sm:px-4 font-semibold h-9 sm:h-10 text-xs sm:text-sm"
+          >
+            Contact Us
+          </Button>
           <Button
             as="a"
             href={siteConfig.phonePrimaryHref}
             size="sm"
-            variant="solid"
-            className="btn-3d px-2.5 sm:px-3 font-semibold text-ink"
+            variant="flat"
+            className="px-2.5 sm:px-4 font-semibold h-9 sm:h-10 text-xs sm:text-sm bg-black/5 hover:bg-black/10 hidden min-[400px]:flex"
             aria-label={`Call ${siteConfig.phonePrimary}`}
           >
-            <span className="tnum font-mono hidden sm:inline">
-              {siteConfig.phonePrimary}
-            </span>
-          </Button>
-          <Button
-            as="a"
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            size="sm"
-            startContent={<MessageCircle size={14} aria-hidden />}
-            aria-label="Chat on WhatsApp"
-            className="hidden sm:inline-flex btn-3d px-4"
-          >
-            WhatsApp
+            <Phone size={14} className="sm:mr-1.5" aria-hidden />
+            <span className="hidden sm:inline">Call Now</span>
           </Button>
         </div>
       </div>
